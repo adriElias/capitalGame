@@ -7,7 +7,7 @@ Educational Java project to practice file reading, `HashMap` usage, randomness, 
 - Read country-capital pairs from `countries.txt`
 - Store them in a `HashMap<String, String>` (key = country, value = capital)
 - Implement a 10-question quiz with random countries
-- Track score and save user name + score to `classificacio.txt`
+- Track score and save user name + score to `classification.txt`
 
 ## How It Works
 
@@ -25,22 +25,21 @@ src/
 ├── CapitalGame.java       # Game logic and HashMap handling
 ├── Main.java              # Program entry point
 ├── countries.txt          # Input file (must be present)
-└── classificacio.txt      # Output file (created/updated automatically)
+└── classification.txt      # Output file (created/updated automatically)
 ```
 
 ## How to Run
-```text
+```bash
 1. Place `countries.txt` in the `src` folder (or adjust the file path in code)
 2. Compile and run:
-```
-```bash
+
 javac src/*.java
 java -cp src Main
 ```
 
 ## Example Execution
 ```text
-textWhat's your name? Maria
+What's your name?:  Maria
 Question 1: What is the capital of France?
 Paris
 Correct! (+1 point)
