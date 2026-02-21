@@ -4,8 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class CapitalGame {
     private Map<String, String> countries = new HashMap<>();
@@ -21,7 +20,7 @@ public class CapitalGame {
                 String[] parts = line.split(" ");
                 String country = parts[0].trim();
                 String capital = parts[1].trim();
-                countries.put(country, capital);
+                countries.put(country, capital).toLowerCase();
             }
             reader.close();
 
@@ -32,4 +31,11 @@ public class CapitalGame {
             System.err.println("Error reading file: " + e.getMessage());
         }
     }
+
+    private List<String> getRandomCountries(){
+        List<String> countryList = new ArrayList<>(countries.keySet());
+        Collections.shuffle(countryList);
+        return  countryList.subList(0,10);
+    }
+
 }
