@@ -14,7 +14,7 @@ public class App
         System.out.print("Enter your name: ");
         String username = scanner.nextLine();
 
-
+        game.playGame();
 
     }
 }
