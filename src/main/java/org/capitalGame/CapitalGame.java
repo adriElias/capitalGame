@@ -1,16 +1,23 @@
 package org.capitalGame;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class CapitalGame {
-    private Map<String, String> countries = new HashMap<>();
+    private final Map<String, String> countries = new HashMap<>();
+    private final String username;
+    private int score = 0;
 
-    public CapitalGame() {
+    public int getScore() {
+        return score;
+    }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public CapitalGame(String username) {
+        this.username = username;
     }
 
     public void loadFile(String filename) {
@@ -32,17 +39,17 @@ public class CapitalGame {
         }
     }
 
-    private List<String> getRandomCountries(){
+    private List<String> getRandomCountries() {
         List<String> countryList = new ArrayList<>(countries.keySet());
         Collections.shuffle(countryList);
-        return  countryList.subList(0,10);
+        return countryList.subList(0, 10);
     }
 
-    public void playGame(){
+    public void playGame() {
         Scanner scanner = new Scanner(System.in);
         List<String> selectedCountries = getRandomCountries();
 
-        for(int i = 0; i <= 9; i++){
+        for (int i = 0; i <= 9; i++) {
             String country = selectedCountries.get(i);
             String correctCapital = countries.get(country);
 
@@ -50,11 +57,27 @@ public class CapitalGame {
             System.out.print("Your answer: ");
             String answer = scanner.nextLine();
 
-            if(answer.equalsIgnoreCase(correctCapital)){
+            if (answer.equalsIgnoreCase(correctCapital)) {
                 System.out.println("Correct!\n");
-            }else {
+                score++;
+            } else {
                 System.out.println("\n Wrong!. The capital of " + country + " is: " + correctCapital + " \n");
             }
         }
+        System.out.println(username + ", your final score is: " + score + "/10\n");
+    }
+
+    public void saveScore() throws IOException {
+
+        String file = "assets/classification.txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+            writer.write(username + " - " + score + "/10");
+            writer.newLine();
+            //writer.close();
+        }
+        System.out.println("Score saved in " + file);
+
+
     }
 }
+
