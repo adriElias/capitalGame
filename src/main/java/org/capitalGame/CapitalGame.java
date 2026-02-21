@@ -46,7 +46,6 @@ public class CapitalGame {
     }
 
     public void playGame() {
-        Scanner scanner = new Scanner(System.in);
         List<String> selectedCountries = getRandomCountries();
 
         for (int i = 0; i <= 9; i++) {
@@ -54,8 +53,7 @@ public class CapitalGame {
             String correctCapital = countries.get(country);
 
             System.out.println("\n Question " + (i + 1) + "/10: What is the capital of " + country + "?");
-            System.out.print("Your answer: ");
-            String answer = scanner.nextLine();
+            String answer = KeyboardReader.readLettersOnly("Your answer: ");
 
             if (answer.equalsIgnoreCase(correctCapital)) {
                 System.out.println("Correct!\n");
