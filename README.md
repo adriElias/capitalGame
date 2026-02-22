@@ -22,6 +22,8 @@ Educational Java project to practice file reading, `HashMap` usage, randomness, 
 ## Project Structure
 ```text
 src/
+├── InvalidInputException.java  # Custom exception
+├── KeyboardReader.java         # reading and validation inputs
 ├── CapitalGame.java       # Game logic and HashMap handling
 ├── Main.java              # Program entry point
 ├── countries.txt          # Input file (must be present)
